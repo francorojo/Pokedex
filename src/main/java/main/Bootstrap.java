@@ -69,6 +69,14 @@ public class Bootstrap {
 	pokemonAgua1.evolucionar(primeraEvolucionAgua);
 	entityManager.persist(pokemonAgua1);
 	
+	Pokemon pokemonAgua2 = new Pokemon("pokemonDeAgua2");
+	pokemonAgua2.agregarhabilidad("Super chorro de agua");
+	pokemonAgua2.agregartipo("Agua");
+	pokemonAgua2.aumentarNivel();
+	pokemonAgua2.aumentarNivel();
+	pokemonAgua2.evolucionar(segundaEvolucionAgua);
+	entityManager.persist(pokemonAgua2);
+	
 	entityManager.getTransaction().commit();
 	entityManager.close();
 	factory.close();
