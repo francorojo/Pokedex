@@ -5,16 +5,14 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Entrenadores")
 public class Entrenador {
 	
-	@Id
-	@GeneratedValue
-	Integer id_entrenador; //PK
-
+	@Id	
 	String nombre;
 
     @OneToMany
-    @JoinColumn(name = "pokemones_usuarios")
+    @JoinColumn(name = "id_entrenador")
     List<Pokemon> pokemones = new ArrayList<>();
     
     public Entrenador(String nombre) {
@@ -22,13 +20,19 @@ public class Entrenador {
 	}
     
     public Entrenador() {}
-
-    public void agregarPokemon(Pokemon pokemon){
-        pokemones.add(pokemon);
-    }
     
+    //Getters
     public String getNombre(){
         return nombre;
+    }
+    
+    public List<Pokemon> getPokemones(){
+        return pokemones;
+    }
+    
+    //Comportamiento
+    public void agregarPokemon(Pokemon pokemon){
+        pokemones.add(pokemon);
     }
     
 }

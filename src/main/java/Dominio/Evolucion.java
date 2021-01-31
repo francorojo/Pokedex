@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Evoluciones")
 public class Evolucion {
 
 	@Id @GeneratedValue
@@ -16,7 +17,8 @@ public class Evolucion {
 	
 	String nombre;
     @Column(name = "nivel_requerido_para_evolucion")
-	Integer nivelRequeridoParaEvolucion;
+	
+    Integer nivelRequeridoParaEvolucion;
 
     public Evolucion(String nombre,Integer nivelRequeridoParaEvolucion) {
 		this.nombre = nombre;
@@ -25,15 +27,24 @@ public class Evolucion {
     
     public Evolucion() {}
 
-    public void agregartipo(String tipo){
-        tipos.add(tipo);
-    }
+    //Getters
+    public String getNombre() {
+		return nombre;
+	}
     
-	public Integer nivelRequeridoParaEvolucion() {
+    public List<String> getTipos() {
+		return tipos;
+	}
+
+	public Integer getNivelRequeridoParaEvolucion() {
 		return nivelRequeridoParaEvolucion;
 	}
 
-	public List<String> getTipos() {
-		return tipos;
-	}
+	//Comportamiento
+    public void agregarTipo(String tipo){
+        tipos.add(tipo);
+    }
+    
+
+	
 }
